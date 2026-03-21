@@ -258,6 +258,116 @@ const fallbackSeasonResults = [
       { horse: "Finest Hour", trainer: "Ralph Manning", jockey: "Rihaan Goyaram", position: 3 },
     ],
   },
+  {
+    date: "2026-03-28",
+    weather: "Pending",
+    going: "Pending",
+    distance: 1200,
+    raceName: "Race 1 Placeholder",
+    className: "Fields Pending",
+    meetingName: "Manawatu RC @ Trentham - Courtesy Ford Manawatu Sires' Produce Raceday",
+    status: "fields-pending",
+    results: [],
+  },
+  {
+    date: "2026-03-28",
+    weather: "Pending",
+    going: "Pending",
+    distance: 1400,
+    raceName: "Courtesy Ford Manawatu Sires' Produce Stakes",
+    className: "Group 1 - Fields Pending",
+    meetingName: "Manawatu RC @ Trentham - Courtesy Ford Manawatu Sires' Produce Raceday",
+    status: "fields-pending",
+    results: [],
+  },
+  {
+    date: "2026-03-28",
+    weather: "Pending",
+    going: "Pending",
+    distance: 1600,
+    raceName: "Race 3 Placeholder",
+    className: "Fields Pending",
+    meetingName: "Manawatu RC @ Trentham - Courtesy Ford Manawatu Sires' Produce Raceday",
+    status: "fields-pending",
+    results: [],
+  },
+  {
+    date: "2026-03-28",
+    weather: "Pending",
+    going: "Pending",
+    distance: 1600,
+    raceName: "Race 4 Placeholder",
+    className: "Fields Pending",
+    meetingName: "Manawatu RC @ Trentham - Courtesy Ford Manawatu Sires' Produce Raceday",
+    status: "fields-pending",
+    results: [],
+  },
+  {
+    date: "2026-03-28",
+    weather: "Pending",
+    going: "Pending",
+    distance: 2100,
+    raceName: "Race 5 Placeholder",
+    className: "Fields Pending",
+    meetingName: "Manawatu RC @ Trentham - Courtesy Ford Manawatu Sires' Produce Raceday",
+    status: "fields-pending",
+    results: [],
+  },
+  {
+    date: "2026-03-28",
+    weather: "Pending",
+    going: "Pending",
+    distance: 1200,
+    raceName: "Race 6 Placeholder",
+    className: "Fields Pending",
+    meetingName: "Manawatu RC @ Trentham - Courtesy Ford Manawatu Sires' Produce Raceday",
+    status: "fields-pending",
+    results: [],
+  },
+  {
+    date: "2026-03-28",
+    weather: "Pending",
+    going: "Pending",
+    distance: 1400,
+    raceName: "Race 7 Placeholder",
+    className: "Fields Pending",
+    meetingName: "Manawatu RC @ Trentham - Courtesy Ford Manawatu Sires' Produce Raceday",
+    status: "fields-pending",
+    results: [],
+  },
+  {
+    date: "2026-03-28",
+    weather: "Pending",
+    going: "Pending",
+    distance: 2040,
+    raceName: "Race 8 Placeholder",
+    className: "Fields Pending",
+    meetingName: "Manawatu RC @ Trentham - Courtesy Ford Manawatu Sires' Produce Raceday",
+    status: "fields-pending",
+    results: [],
+  },
+  {
+    date: "2026-03-28",
+    weather: "Pending",
+    going: "Pending",
+    distance: 1200,
+    raceName: "Race 9 Placeholder",
+    className: "Fields Pending",
+    meetingName: "Manawatu RC @ Trentham - Courtesy Ford Manawatu Sires' Produce Raceday",
+    status: "fields-pending",
+    results: [],
+  },
+  {
+    date: "2026-03-28",
+    weather: "Pending",
+    going: "Pending",
+    distance: 1600,
+    raceName: "Race 10 Placeholder",
+    className: "Fields Pending",
+    meetingName: "Manawatu RC @ Trentham - Courtesy Ford Manawatu Sires' Produce Raceday",
+    status: "fields-pending",
+    results: [],
+  },
 ];
 
 const fallbackSourceLinks = [
@@ -266,6 +376,7 @@ const fallbackSourceLinks = [
   { label: "17 Jan 2026", url: "https://loveracing.nz/RaceInfo/54877/Meeting-Overview.aspx" },
   { label: "31 Jan 2026", url: "https://loveracing.nz/RaceInfo/54889/Meeting-Overview.aspx" },
   { label: "1 Mar 2026", url: "https://loveracing.nz/RaceInfo/54912/Meeting-Overview.aspx" },
+  { label: "28 Mar 2026", url: "https://jointheaction.co.nz/courtesy-ford-manawatu-sires-produce-stakes-raceday" },
 ];
 
 const sprintExample = [
@@ -290,14 +401,18 @@ let runners = structuredClone(sprintExample);
 let seasonResults = structuredClone(fallbackSeasonResults);
 let sourceLinks = structuredClone(fallbackSourceLinks);
 let seasonStats = buildSeasonStats();
+let currentMeetingRaces = [];
 
 const runnerBody = document.querySelector("#runner-body");
 const resultsRoot = document.querySelector("#results");
 const recentReviewRoot = document.querySelector("#recent-review");
+const upcomingMeetingsRoot = document.querySelector("#upcoming-meetings");
 const insightsGrid = document.querySelector("#insights-grid");
 const sourcesRoot = document.querySelector("#sources");
 const seasonStrip = document.querySelector("#season-strip");
 const dataStatus = document.querySelector("#data-status");
+const meetingRaceSelect = document.querySelector("#meeting-race");
+const meetingSummary = document.querySelector("#meeting-summary");
 
 function normalizeName(value) {
   return value.trim().toLowerCase();
@@ -610,6 +725,108 @@ function renderResults() {
   `;
 }
 
+function meetingRacesForDate(dateValue) {
+  return seasonResults
+    .filter((race) => race.date === dateValue)
+    .sort((left, right) => left.distance - right.distance || left.raceName.localeCompare(right.raceName));
+}
+
+function groupedMeetings() {
+  const byDate = new Map();
+
+  seasonResults.forEach((race) => {
+    if (!byDate.has(race.date)) {
+      byDate.set(race.date, []);
+    }
+    byDate.get(race.date).push(race);
+  });
+
+  return [...byDate.entries()]
+    .map(([date, races]) => ({
+      date,
+      races: races.sort((left, right) => left.distance - right.distance || left.raceName.localeCompare(right.raceName)),
+    }))
+    .sort((left, right) => left.date.localeCompare(right.date));
+}
+
+function nextUpcomingMeeting(baseDateValue = "") {
+  const baseDate = baseDateValue || new Date().toISOString().slice(0, 10);
+  return groupedMeetings().find((meeting) => meeting.date >= baseDate) || groupedMeetings().slice(-1)[0] || null;
+}
+
+function syncMeetingPicker(selectedRaceName = "") {
+  const dateValue = document.querySelector("#race-date").value;
+  currentMeetingRaces = meetingRacesForDate(dateValue);
+  meetingRaceSelect.innerHTML = "";
+
+  if (!currentMeetingRaces.length) {
+    const option = document.createElement("option");
+    option.value = "";
+    option.textContent = "No bundled races for this date";
+    meetingRaceSelect.appendChild(option);
+    meetingRaceSelect.disabled = true;
+    meetingSummary.textContent = `No bundled Trentham meeting is loaded for ${dateValue || "this date"}.`;
+    return;
+  }
+
+  meetingRaceSelect.disabled = false;
+  currentMeetingRaces.forEach((race) => {
+    const option = document.createElement("option");
+    option.value = race.raceName;
+    const pendingLabel = race.status === "fields-pending" ? " • Fields pending" : "";
+    option.textContent = `${race.raceName} • ${race.distance}m • ${race.className}${pendingLabel}`;
+    if (race.raceName === selectedRaceName) {
+      option.selected = true;
+    }
+    meetingRaceSelect.appendChild(option);
+  });
+
+  if (!meetingRaceSelect.value && currentMeetingRaces[0]) {
+    meetingRaceSelect.value = currentMeetingRaces[0].raceName;
+  }
+
+  const pendingCount = currentMeetingRaces.filter((race) => race.status === "fields-pending").length;
+  meetingSummary.textContent = pendingCount
+    ? `${currentMeetingRaces.length} bundled Trentham races loaded for ${dateValue}. ${pendingCount} race${pendingCount === 1 ? "" : "s"} still have fields pending.`
+    : `${currentMeetingRaces.length} bundled Trentham race${currentMeetingRaces.length === 1 ? "" : "s"} loaded for ${dateValue}.`;
+}
+
+function applyMeetingRace(raceName) {
+  const selectedRace = currentMeetingRaces.find((race) => race.raceName === raceName);
+  if (!selectedRace) {
+    return;
+  }
+
+  document.querySelector("#race-name").value = selectedRace.raceName;
+  document.querySelector("#distance").value = selectedRace.distance;
+  if ([...document.querySelector("#going").options].some((option) => option.value === selectedRace.going)) {
+    document.querySelector("#going").value = selectedRace.going;
+  }
+  if ([...document.querySelector("#weather").options].some((option) => option.value === selectedRace.weather)) {
+    document.querySelector("#weather").value = selectedRace.weather;
+  }
+}
+
+function loadMeetingForDate(dateValue, preferredRaceName = "") {
+  currentMeetingRaces = meetingRacesForDate(dateValue);
+  syncMeetingPicker(preferredRaceName);
+
+  if (!currentMeetingRaces.length) {
+    renderResults();
+    renderRecentReview();
+    return;
+  }
+
+  const raceNameToUse = preferredRaceName && currentMeetingRaces.some((race) => race.raceName === preferredRaceName)
+    ? preferredRaceName
+    : meetingRaceSelect.value;
+
+  meetingRaceSelect.value = raceNameToUse;
+  applyMeetingRace(raceNameToUse);
+  renderResults();
+  renderRecentReview();
+}
+
 function renderRecentReview() {
   const config = raceConfig();
   if (!config.raceDate) {
@@ -680,6 +897,57 @@ function renderRecentReview() {
         .join("")}
     </div>
   `;
+}
+
+function renderUpcomingMeetings() {
+  const today = new Date().toISOString().slice(0, 10);
+  const meetings = groupedMeetings().filter((meeting) => meeting.date >= today);
+  const nextMeeting = meetings[0] || groupedMeetings().slice(-1)[0] || null;
+
+  if (!nextMeeting) {
+    upcomingMeetingsRoot.innerHTML = `<div class="empty-state">No bundled Trentham meetings are available.</div>`;
+    return;
+  }
+
+  upcomingMeetingsRoot.innerHTML = `
+    <div class="meeting-list">
+      <article class="meeting-card">
+        <p class="eyebrow">Next meeting</p>
+        <h3>${nextMeeting.date}</h3>
+        <p>${nextMeeting.races.length} race${nextMeeting.races.length === 1 ? "" : "s"} on the bundled card.</p>
+        <p>${nextMeeting.races.some((race) => race.status === "fields-pending") ? "Fields are still pending for part or all of this card." : "Fields are available in the bundled dataset."}</p>
+        <div class="review-meta">
+          ${nextMeeting.races.map((race) => `<span class="pill">${race.raceName} • ${race.distance}m</span>`).join("")}
+        </div>
+      </article>
+      ${
+        meetings.length > 1
+          ? meetings
+              .slice(1, 4)
+              .map(
+                (meeting) => `
+                  <article class="meeting-card">
+                    <p class="eyebrow">Upcoming</p>
+                    <h3>${meeting.date}</h3>
+                    <p>${meeting.races.length} race${meeting.races.length === 1 ? "" : "s"} available in the dataset.</p>
+                  </article>
+                `
+              )
+              .join("")
+          : ""
+      }
+    </div>
+  `;
+}
+
+function focusNextUpcomingMeeting() {
+  const nextMeeting = nextUpcomingMeeting();
+  if (!nextMeeting) {
+    return;
+  }
+
+  document.querySelector("#race-date").value = nextMeeting.date;
+  loadMeetingForDate(nextMeeting.date);
 }
 
 function ordinal(value) {
@@ -790,16 +1058,24 @@ async function refreshSeasonData() {
       : structuredClone(fallbackSourceLinks);
     seasonStats = buildSeasonStats();
     renderInsights();
-    renderResults();
-    renderRecentReview();
+    renderUpcomingMeetings();
+    if (!meetingRacesForDate(document.querySelector("#race-date").value).length) {
+      focusNextUpcomingMeeting();
+    } else {
+      loadMeetingForDate(document.querySelector("#race-date").value, document.querySelector("#race-name").value);
+    }
     setDataStatus(`Data source: refreshed ${new Date().toLocaleTimeString()}`, "good");
   } catch (error) {
     seasonResults = structuredClone(fallbackSeasonResults);
     sourceLinks = structuredClone(fallbackSourceLinks);
     seasonStats = buildSeasonStats();
     renderInsights();
-    renderResults();
-    renderRecentReview();
+    renderUpcomingMeetings();
+    if (!meetingRacesForDate(document.querySelector("#race-date").value).length) {
+      focusNextUpcomingMeeting();
+    } else {
+      loadMeetingForDate(document.querySelector("#race-date").value, document.querySelector("#race-name").value);
+    }
     setDataStatus("Data source: refresh failed, using bundled fallback", "warn");
   }
 }
@@ -811,15 +1087,18 @@ function loadExample(example, raceName, distance, going, weather) {
   document.querySelector("#going").value = going;
   document.querySelector("#weather").value = weather;
   renderRunners();
+  syncMeetingPicker(raceName);
   renderResults();
   renderRecentReview();
 }
 
 document.querySelector("#load-sprint").addEventListener("click", () => {
+  document.querySelector("#race-date").value = "2026-03-01";
   loadExample(sprintExample, "Sample Trentham Sprint", 1200, "Soft5", "Fine");
 });
 
 document.querySelector("#load-mile").addEventListener("click", () => {
+  document.querySelector("#race-date").value = "2026-01-31";
   loadExample(mileExample, "Sample Trentham Mile", 1600, "Soft6", "Overcast");
 });
 
@@ -845,6 +1124,11 @@ document.querySelector("#score-race").addEventListener("click", renderResults);
 document.querySelector("#refresh-race").addEventListener("click", () => {
   refreshSeasonData();
 });
+meetingRaceSelect.addEventListener("input", () => {
+  applyMeetingRace(meetingRaceSelect.value);
+  renderResults();
+  renderRecentReview();
+});
 
 runnerBody.addEventListener("input", (event) => {
   const { index, key } = event.target.dataset;
@@ -863,6 +1147,11 @@ runnerBody.addEventListener("click", (event) => {
 
 ["#distance", "#going", "#weather", "#race-name", "#race-date", "#rail"].forEach((selector) => {
   document.querySelector(selector).addEventListener("input", () => {
+    if (selector === "#race-date") {
+      loadMeetingForDate(document.querySelector("#race-date").value);
+      return;
+    }
+    syncMeetingPicker(document.querySelector("#race-name").value);
     renderResults();
     renderRecentReview();
   });
@@ -870,6 +1159,6 @@ runnerBody.addEventListener("click", (event) => {
 
 renderRunners();
 renderInsights();
-renderResults();
-renderRecentReview();
+renderUpcomingMeetings();
+loadMeetingForDate(document.querySelector("#race-date").value, document.querySelector("#race-name").value);
 refreshSeasonData();

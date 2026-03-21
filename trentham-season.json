@@ -4,7 +4,8 @@
     { "label": "3 Jan 2026", "url": "https://loveracing.nz/RaceInfo/54866/Meeting-Overview.aspx" },
     { "label": "17 Jan 2026", "url": "https://loveracing.nz/RaceInfo/54877/Meeting-Overview.aspx" },
     { "label": "31 Jan 2026", "url": "https://loveracing.nz/RaceInfo/54889/Meeting-Overview.aspx" },
-    { "label": "1 Mar 2026", "url": "https://loveracing.nz/RaceInfo/54912/Meeting-Overview.aspx" }
+    { "label": "1 Mar 2026", "url": "https://loveracing.nz/RaceInfo/54912/Meeting-Overview.aspx" },
+    { "label": "28 Mar 2026", "url": "https://jointheaction.co.nz/courtesy-ford-manawatu-sires-produce-stakes-raceday" }
   ],
   "seasonResults": [
     {
@@ -265,6 +266,116 @@
         { "horse": "Platinum Pantheon", "trainer": "Lisa Latta", "jockey": "Bruno Queiroz", "position": 2 },
         { "horse": "Finest Hour", "trainer": "Ralph Manning", "jockey": "Rihaan Goyaram", "position": 3 }
       ]
+    },
+    {
+      "date": "2026-03-28",
+      "weather": "Pending",
+      "going": "Pending",
+      "distance": 1200,
+      "raceName": "Race 1 Placeholder",
+      "className": "Fields Pending",
+      "meetingName": "Manawatu RC @ Trentham - Courtesy Ford Manawatu Sires' Produce Raceday",
+      "status": "fields-pending",
+      "results": []
+    },
+    {
+      "date": "2026-03-28",
+      "weather": "Pending",
+      "going": "Pending",
+      "distance": 1400,
+      "raceName": "Courtesy Ford Manawatu Sires' Produce Stakes",
+      "className": "Group 1 - Fields Pending",
+      "meetingName": "Manawatu RC @ Trentham - Courtesy Ford Manawatu Sires' Produce Raceday",
+      "status": "fields-pending",
+      "results": []
+    },
+    {
+      "date": "2026-03-28",
+      "weather": "Pending",
+      "going": "Pending",
+      "distance": 1600,
+      "raceName": "Race 3 Placeholder",
+      "className": "Fields Pending",
+      "meetingName": "Manawatu RC @ Trentham - Courtesy Ford Manawatu Sires' Produce Raceday",
+      "status": "fields-pending",
+      "results": []
+    },
+    {
+      "date": "2026-03-28",
+      "weather": "Pending",
+      "going": "Pending",
+      "distance": 1600,
+      "raceName": "Race 4 Placeholder",
+      "className": "Fields Pending",
+      "meetingName": "Manawatu RC @ Trentham - Courtesy Ford Manawatu Sires' Produce Raceday",
+      "status": "fields-pending",
+      "results": []
+    },
+    {
+      "date": "2026-03-28",
+      "weather": "Pending",
+      "going": "Pending",
+      "distance": 2100,
+      "raceName": "Race 5 Placeholder",
+      "className": "Fields Pending",
+      "meetingName": "Manawatu RC @ Trentham - Courtesy Ford Manawatu Sires' Produce Raceday",
+      "status": "fields-pending",
+      "results": []
+    },
+    {
+      "date": "2026-03-28",
+      "weather": "Pending",
+      "going": "Pending",
+      "distance": 1200,
+      "raceName": "Race 6 Placeholder",
+      "className": "Fields Pending",
+      "meetingName": "Manawatu RC @ Trentham - Courtesy Ford Manawatu Sires' Produce Raceday",
+      "status": "fields-pending",
+      "results": []
+    },
+    {
+      "date": "2026-03-28",
+      "weather": "Pending",
+      "going": "Pending",
+      "distance": 1400,
+      "raceName": "Race 7 Placeholder",
+      "className": "Fields Pending",
+      "meetingName": "Manawatu RC @ Trentham - Courtesy Ford Manawatu Sires' Produce Raceday",
+      "status": "fields-pending",
+      "results": []
+    },
+    {
+      "date": "2026-03-28",
+      "weather": "Pending",
+      "going": "Pending",
+      "distance": 2040,
+      "raceName": "Race 8 Placeholder",
+      "className": "Fields Pending",
+      "meetingName": "Manawatu RC @ Trentham - Courtesy Ford Manawatu Sires' Produce Raceday",
+      "status": "fields-pending",
+      "results": []
+    },
+    {
+      "date": "2026-03-28",
+      "weather": "Pending",
+      "going": "Pending",
+      "distance": 1200,
+      "raceName": "Race 9 Placeholder",
+      "className": "Fields Pending",
+      "meetingName": "Manawatu RC @ Trentham - Courtesy Ford Manawatu Sires' Produce Raceday",
+      "status": "fields-pending",
+      "results": []
+    },
+    {
+      "date": "2026-03-28",
+      "weather": "Pending",
+      "going": "Pending",
+      "distance": 1600,
+      "raceName": "Race 10 Placeholder",
+      "className": "Fields Pending",
+      "meetingName": "Manawatu RC @ Trentham - Courtesy Ford Manawatu Sires' Produce Raceday",
+      "status": "fields-pending",
+      "results": []
     }
   ]
 }

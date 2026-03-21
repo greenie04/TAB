@@ -28,9 +28,14 @@ There is no build step and no dependency install.
 
 The refresh button reloads [trentham-season.json](C:\Users\dslng\GitHub\TAB\trentham-season.json), so if you update that file with newer Trentham results or fields, the app can pull the new data into the page without editing the JavaScript.
 
+The bundled data now includes the confirmed **28 March 2026 Manawatu RC @ Trentham** meeting as a placeholder card so the app can surface the next meeting before official fields are published.
+
 ## What The App Does
 
 - Lets you choose Trentham race conditions such as distance, weather, and going
+- Reviews all bundled upcoming Trentham meetings and surfaces the next meeting automatically
+- Loads all bundled Trentham races for the selected event date
+- Marks races as fields-pending when the meeting is confirmed but the official fields are not bundled yet
 - Loads example fields for sprint and middle-distance races
 - Lets you edit runners or add your own
 - Lets you enter all-season runs, wins, and placings for each horse
