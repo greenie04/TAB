@@ -40,8 +40,8 @@
         <section class="card controls-card">
           <div class="section-heading">
             <div>
-              <p class="eyebrow">Race Setup</p>
-              <h2>Target Conditions</h2>
+              <p class="eyebrow">Meeting View</p>
+              <h2>Races For The Day</h2>
             </div>
             <div class="button-row">
               <button id="load-sprint" type="button">Load Sprint Example</button>
@@ -56,49 +56,12 @@
 
           <div class="controls-grid">
             <label>
-              Race name
-              <input id="race-name" type="text" value="Sample Trentham Sprint" />
-            </label>
-            <label>
               Race date
               <input id="race-date" type="date" value="2026-03-28" />
             </label>
             <label>
               Meeting race
               <select id="meeting-race"></select>
-            </label>
-            <label>
-              Distance (m)
-              <input id="distance" type="number" min="800" step="50" value="1200" />
-            </label>
-            <label>
-              Track firmness / going
-              <select id="going">
-                <option>Good3</option>
-                <option>Good4</option>
-                <option selected>Soft5</option>
-                <option>Soft6</option>
-                <option>Heavy8</option>
-                <option>Heavy10</option>
-              </select>
-            </label>
-            <label>
-              Weather
-              <select id="weather">
-                <option selected>Fine</option>
-                <option>Overcast</option>
-                <option>Showers</option>
-                <option>Rain</option>
-              </select>
-            </label>
-            <label>
-              Rail notes
-              <input
-                id="rail"
-                type="text"
-                value="True"
-                placeholder="True, out 3m, out 7.5m..."
-              />
             </label>
           </div>
 
@@ -161,11 +124,11 @@
           <div class="section-heading">
             <div>
               <p class="eyebrow">Prediction</p>
-              <h2>Ranked Output</h2>
+              <h2>Selected Race Prediction</h2>
             </div>
             <p class="mini-note">
-              Scores are relative inside the current field, not universal power
-              ratings.
+              Race-day conditions come from the selected meeting race, and scores
+              are relative inside that field.
             </p>
           </div>
           <div id="results"></div>

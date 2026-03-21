@@ -402,6 +402,7 @@ let seasonResults = structuredClone(fallbackSeasonResults);
 let sourceLinks = structuredClone(fallbackSourceLinks);
 let seasonStats = buildSeasonStats();
 let currentMeetingRaces = [];
+let selectedRace = null;
 
 const runnerBody = document.querySelector("#runner-body");
 const resultsRoot = document.querySelector("#results");
@@ -663,17 +664,6 @@ function renderRunners() {
   });
 }
 
-function raceConfig() {
-  return {
-    raceName: document.querySelector("#race-name").value.trim(),
-    raceDate: document.querySelector("#race-date").value,
-    distance: Number(document.querySelector("#distance").value),
-    going: document.querySelector("#going").value,
-    weather: document.querySelector("#weather").value,
-    rail: document.querySelector("#rail").value.trim(),
-  };
-}
-
 function parseDateOnly(value) {
   return new Date(`${value}T00:00:00`);
 }
@@ -684,7 +674,13 @@ function daysBetween(earlier, later) {
 }
 
 function renderResults() {
-  const config = raceConfig();
+  const config = selectedRace || {
+    raceName: "No race selected",
+    date: document.querySelector("#race-date").value,
+    distance: 1200,
+    going: "Soft5",
+    weather: "Fine",
+  };
   if (!runners.length) {
     resultsRoot.innerHTML = `<div class="empty-state">Add at least one runner to score the field.</div>`;
     return;
@@ -707,6 +703,7 @@ function renderResults() {
               </div>
               <div class="result-score">${result.score}</div>
             </div>
+            <p class="mini-note">${config.raceName} • ${config.distance}m • ${config.going} • ${config.weather}</p>
             <div class="breakdown">
               <span>Form ${result.breakdown.form}</span>
               <span>Season ${result.breakdown.season}</span>
@@ -786,25 +783,25 @@ function syncMeetingPicker(selectedRaceName = "") {
   }
 
   const pendingCount = currentMeetingRaces.filter((race) => race.status === "fields-pending").length;
-  meetingSummary.textContent = pendingCount
+  const summaryText = pendingCount
     ? `${currentMeetingRaces.length} bundled Trentham races loaded for ${dateValue}. ${pendingCount} race${pendingCount === 1 ? "" : "s"} still have fields pending.`
     : `${currentMeetingRaces.length} bundled Trentham race${currentMeetingRaces.length === 1 ? "" : "s"} loaded for ${dateValue}.`;
+  meetingSummary.innerHTML = `
+    <p>${summaryText}</p>
+    <div class="review-meta">
+      ${currentMeetingRaces
+        .map((race) => `<span class="pill">${race.raceName} • ${race.distance}m${race.status === "fields-pending" ? " • Pending" : ""}</span>`)
+        .join("")}
+    </div>
+  `;
 }
 
 function applyMeetingRace(raceName) {
-  const selectedRace = currentMeetingRaces.find((race) => race.raceName === raceName);
-  if (!selectedRace) {
+  const race = currentMeetingRaces.find((entry) => entry.raceName === raceName);
+  if (!race) {
     return;
   }
-
-  document.querySelector("#race-name").value = selectedRace.raceName;
-  document.querySelector("#distance").value = selectedRace.distance;
-  if ([...document.querySelector("#going").options].some((option) => option.value === selectedRace.going)) {
-    document.querySelector("#going").value = selectedRace.going;
-  }
-  if ([...document.querySelector("#weather").options].some((option) => option.value === selectedRace.weather)) {
-    document.querySelector("#weather").value = selectedRace.weather;
-  }
+  selectedRace = race;
 }
 
 function loadMeetingForDate(dateValue, preferredRaceName = "") {
@@ -828,13 +825,13 @@ function loadMeetingForDate(dateValue, preferredRaceName = "") {
 }
 
 function renderRecentReview() {
-  const config = raceConfig();
-  if (!config.raceDate) {
+  const raceDate = document.querySelector("#race-date").value;
+  if (!raceDate) {
     recentReviewRoot.innerHTML = `<div class="empty-state">Set a race date to review the previous 14 days.</div>`;
     return;
   }
 
-  const targetDate = parseDateOnly(config.raceDate);
+  const targetDate = parseDateOnly(raceDate);
   const runnerNames = new Set(runners.map((runner) => normalizeName(runner.horse)));
   const trainerNames = new Set(runners.map((runner) => normalizeName(runner.trainer)));
   const jockeyNames = new Set(runners.map((runner) => normalizeName(runner.jockey)));
@@ -861,7 +858,7 @@ function renderRecentReview() {
   if (!recentRaces.length) {
     recentReviewRoot.innerHTML = `
       <div class="empty-state">
-        No bundled races fall within the 14 days before ${config.raceDate}. Adjust the race date or expand the dataset if you want more recent review coverage.
+        No bundled races fall within the 14 days before ${raceDate}. Adjust the race date or expand the dataset if you want more recent review coverage.
       </div>
     `;
     return;
@@ -1062,7 +1059,7 @@ async function refreshSeasonData() {
     if (!meetingRacesForDate(document.querySelector("#race-date").value).length) {
       focusNextUpcomingMeeting();
     } else {
-      loadMeetingForDate(document.querySelector("#race-date").value, document.querySelector("#race-name").value);
+      loadMeetingForDate(document.querySelector("#race-date").value, meetingRaceSelect.value);
     }
     setDataStatus(`Data source: refreshed ${new Date().toLocaleTimeString()}`, "good");
   } catch (error) {
@@ -1074,7 +1071,7 @@ async function refreshSeasonData() {
     if (!meetingRacesForDate(document.querySelector("#race-date").value).length) {
       focusNextUpcomingMeeting();
     } else {
-      loadMeetingForDate(document.querySelector("#race-date").value, document.querySelector("#race-name").value);
+      loadMeetingForDate(document.querySelector("#race-date").value, meetingRaceSelect.value);
     }
     setDataStatus("Data source: refresh failed, using bundled fallback", "warn");
   }
@@ -1082,10 +1079,13 @@ async function refreshSeasonData() {
 
 function loadExample(example, raceName, distance, going, weather) {
   runners = structuredClone(example);
-  document.querySelector("#race-name").value = raceName;
-  document.querySelector("#distance").value = distance;
-  document.querySelector("#going").value = going;
-  document.querySelector("#weather").value = weather;
+  selectedRace = {
+    raceName,
+    date: document.querySelector("#race-date").value,
+    distance,
+    going,
+    weather,
+  };
   renderRunners();
   syncMeetingPicker(raceName);
   renderResults();
@@ -1145,20 +1145,14 @@ runnerBody.addEventListener("click", (event) => {
   renderRecentReview();
 });
 
-["#distance", "#going", "#weather", "#race-name", "#race-date", "#rail"].forEach((selector) => {
+["#race-date"].forEach((selector) => {
   document.querySelector(selector).addEventListener("input", () => {
-    if (selector === "#race-date") {
-      loadMeetingForDate(document.querySelector("#race-date").value);
-      return;
-    }
-    syncMeetingPicker(document.querySelector("#race-name").value);
-    renderResults();
-    renderRecentReview();
+    loadMeetingForDate(document.querySelector("#race-date").value);
   });
 });
 
 renderRunners();
 renderInsights();
 renderUpcomingMeetings();
-loadMeetingForDate(document.querySelector("#race-date").value, document.querySelector("#race-name").value);
+loadMeetingForDate(document.querySelector("#race-date").value);
 refreshSeasonData();
