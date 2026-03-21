@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TAB Trentham Predictor</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">NZ Racing Heuristic</p>
+          <h1>TAB Trentham Predictor</h1>
+          <p class="lede">
+            Trentham race scoring built from curated local venue results plus
+            season-wide horse performance, weather, and track firmness signals.
+          </p>
+          <div class="hero-meta">
+            <span>Venue: Trentham</span>
+            <span>Season sample: 2025-26</span>
+            <span>Model type: transparent heuristic</span>
+            <span id="data-status">Data source: bundled sample</span>
+          </div>
+        </div>
+        <aside class="hero-panel">
+          <h2>Model stance</h2>
+          <p>
+            This app ranks runners for Trentham races from an editable field. It
+            uses season-wide horse inputs and Trentham-specific venue signals.
+          </p>
+          <p>
+            Track firmware is treated here as <strong>track firmness / going</strong>
+            to match official Trentham result data.
+          </p>
+        </aside>
+      </header>
+
+      <main class="layout">
+        <section class="card controls-card">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Race Setup</p>
+              <h2>Target Conditions</h2>
+            </div>
+            <div class="button-row">
+              <button id="load-sprint" type="button">Load Sprint Example</button>
+              <button id="load-mile" type="button" class="secondary">
+                Load Mile Example
+              </button>
+              <button id="refresh-race" type="button" class="secondary">
+                Refresh Field Review
+              </button>
+            </div>
+          </div>
+
+          <div class="controls-grid">
+            <label>
+              Race name
+              <input id="race-name" type="text" value="Sample Trentham Sprint" />
+            </label>
+            <label>
+              Race date
+              <input id="race-date" type="date" value="2026-03-28" />
+            </label>
+            <label>
+              Distance (m)
+              <input id="distance" type="number" min="800" step="50" value="1200" />
+            </label>
+            <label>
+              Track firmness / going
+              <select id="going">
+                <option>Good3</option>
+                <option>Good4</option>
+                <option selected>Soft5</option>
+                <option>Soft6</option>
+                <option>Heavy8</option>
+                <option>Heavy10</option>
+              </select>
+            </label>
+            <label>
+              Weather
+              <select id="weather">
+                <option selected>Fine</option>
+                <option>Overcast</option>
+                <option>Showers</option>
+                <option>Rain</option>
+              </select>
+            </label>
+            <label>
+              Rail notes
+              <input
+                id="rail"
+                type="text"
+                value="True"
+                placeholder="True, out 3m, out 7.5m..."
+              />
+            </label>
+          </div>
+
+          <div class="summary-strip" id="season-strip"></div>
+        </section>
+
+        <section class="card runners-card">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Field Builder</p>
+              <h2>Editable Runners</h2>
+            </div>
+            <div class="button-row">
+              <button id="add-runner" type="button">Add Runner</button>
+              <button id="score-race" type="button" class="accent">
+                Score Field
+              </button>
+            </div>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Horse</th>
+                  <th>Trainer</th>
+                  <th>Jockey</th>
+                  <th>Season Runs</th>
+                  <th>Season Wins</th>
+                  <th>Season Plc</th>
+                  <th>Barrier</th>
+                  <th>Form</th>
+                  <th>Best Range</th>
+                  <th>Wet Fit</th>
+                  <th>Course Fit</th>
+                  <th>Days Since</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="runner-body"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="card results-card">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Prediction</p>
+              <h2>Ranked Output</h2>
+            </div>
+            <p class="mini-note">
+              Scores are relative inside the current field, not universal power
+              ratings.
+            </p>
+          </div>
+          <div id="results"></div>
+        </section>
+
+        <section class="card results-card">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Recent Review</p>
+              <h2>Previous 14 Days</h2>
+            </div>
+            <p class="mini-note">
+              Reviews bundled races and field overlaps in the two weeks before the selected race date.
+            </p>
+          </div>
+          <div id="recent-review"></div>
+        </section>
+
+        <section class="card insights-card">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Season Snapshot</p>
+              <h2>Bundled Trentham Signals</h2>
+            </div>
+            <p class="mini-note">
+              Derived from curated official LoveRacing results for the 2025-26
+              Trentham meetings included in the app.
+            </p>
+          </div>
+          <div class="insights-grid" id="insights-grid"></div>
+          <div class="sources" id="sources"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

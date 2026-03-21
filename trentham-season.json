@@ -1,0 +1,270 @@
+{
+  "sourceLinks": [
+    { "label": "6 Dec 2025", "url": "https://loveracing.nz/RaceInfo/54837/Meeting-Overview.aspx" },
+    { "label": "3 Jan 2026", "url": "https://loveracing.nz/RaceInfo/54866/Meeting-Overview.aspx" },
+    { "label": "17 Jan 2026", "url": "https://loveracing.nz/RaceInfo/54877/Meeting-Overview.aspx" },
+    { "label": "31 Jan 2026", "url": "https://loveracing.nz/RaceInfo/54889/Meeting-Overview.aspx" },
+    { "label": "1 Mar 2026", "url": "https://loveracing.nz/RaceInfo/54912/Meeting-Overview.aspx" }
+  ],
+  "seasonResults": [
+    {
+      "date": "2025-12-06",
+      "weather": "Fine",
+      "going": "Soft5",
+      "distance": 1400,
+      "raceName": "Graham's Painters 1400",
+      "className": "3YO SW+P",
+      "results": [
+        { "horse": "Our Sniper", "trainer": "Lisa Latta", "jockey": "Amber Riddell", "position": 1 },
+        { "horse": "The Dirty Dee", "trainer": "Robbie Patterson", "jockey": "Craig Grylls", "position": 2 },
+        { "horse": "Laura's Legacy", "trainer": "Janelle Millar", "jockey": "Chris Dell", "position": 3 }
+      ]
+    },
+    {
+      "date": "2025-12-06",
+      "weather": "Fine",
+      "going": "Soft5",
+      "distance": 1300,
+      "raceName": "JR & N Berkett 1300",
+      "className": "Maiden",
+      "results": [
+        { "horse": "Thorax", "trainer": "Robbie Patterson", "jockey": "Craig Grylls", "position": 1 },
+        { "horse": "Classy Brahma", "trainer": "Trudy & Vaughan Keegan", "jockey": "Bruno Queiroz", "position": 2 },
+        { "horse": "Wyworry", "trainer": "John Wheeler", "jockey": "Opie Bosson", "position": 3 }
+      ]
+    },
+    {
+      "date": "2025-12-06",
+      "weather": "Fine",
+      "going": "Soft5",
+      "distance": 1600,
+      "raceName": "Pullman Hotel Melbourne 1600",
+      "className": "Rating 65",
+      "results": [
+        { "horse": "Knickerless", "trainer": "Lisa Latta", "jockey": "Leah Hemi", "position": 1 },
+        { "horse": "Bradley", "trainer": "Cody Cole", "jockey": "Opie Bosson", "position": 2 },
+        { "horse": "Mustang Morgan", "trainer": "Andrew Forsman", "jockey": "Craig Grylls", "position": 3 }
+      ]
+    },
+    {
+      "date": "2025-12-06",
+      "weather": "Fine",
+      "going": "Soft5",
+      "distance": 1600,
+      "raceName": "Magic Maggie McQuillan Memorial 1600",
+      "className": "Maiden",
+      "results": [
+        { "horse": "Girl Talk", "trainer": "Stephen Nickalls", "jockey": "Kate Hercock", "position": 1 },
+        { "horse": "Can Do", "trainer": "Peter and Trent Didham", "jockey": "Masa Hashizume", "position": 2 },
+        { "horse": "Teresa Mac", "trainer": "Ilone Kelly", "jockey": "Madan Singh", "position": 3 }
+      ]
+    },
+    {
+      "date": "2025-12-06",
+      "weather": "Fine",
+      "going": "Soft5",
+      "distance": 1000,
+      "raceName": "Aztech Engineering Ltd Sprint",
+      "className": "Rating 65",
+      "results": [
+        { "horse": "The Perfect One", "trainer": "Glenn Old", "jockey": "Craig Grylls", "position": 1 },
+        { "horse": "Poppy's Girl", "trainer": "Shaun and Hazel Fannin", "jockey": "Chris Dell", "position": 2 },
+        { "horse": "Albarossa", "trainer": "Kevin & Stephen Gray", "jockey": "Bruno Queiroz", "position": 3 }
+      ]
+    },
+    {
+      "date": "2026-01-03",
+      "weather": "Fine",
+      "going": "Soft5",
+      "distance": 1200,
+      "raceName": "Listen Live on Sportnation.nz Maiden Sprint",
+      "className": "Maiden",
+      "results": [
+        { "horse": "Miss Jones", "trainer": "Cody Cole", "jockey": "Opie Bosson", "position": 1 },
+        { "horse": "Thorax", "trainer": "Robbie Patterson", "jockey": "Craig Grylls", "position": 2 },
+        { "horse": "Classy Brahma", "trainer": "Trudy & Vaughan Keegan", "jockey": "Bruno Queiroz", "position": 3 }
+      ]
+    },
+    {
+      "date": "2026-01-03",
+      "weather": "Fine",
+      "going": "Soft5",
+      "distance": 2200,
+      "raceName": "Ernesto's 2200",
+      "className": "Rating 65",
+      "results": [
+        { "horse": "Latest Model", "trainer": "Gary Vile", "jockey": "Samantha Collett", "position": 1 },
+        { "horse": "Helluvah Return", "trainer": "Gary Vile", "jockey": "Leah Hemi", "position": 2 },
+        { "horse": "Gate Crashers", "trainer": "Shaune Ritchie & Colm Murray", "jockey": "Joe Doyle", "position": 3 }
+      ]
+    },
+    {
+      "date": "2026-01-03",
+      "weather": "Fine",
+      "going": "Soft5",
+      "distance": 1100,
+      "raceName": "JR & N Berkett Wellesley Stakes",
+      "className": "Listed",
+      "results": [
+        { "horse": "Lassified", "trainer": "Andrew Forsman", "jockey": "Bruno Queiroz", "position": 1 },
+        { "horse": "Sweetest Thing", "trainer": "Roydon Bergerson", "jockey": "Wiremu Pinn", "position": 2 },
+        { "horse": "Out Of The Blue", "trainer": "Mark Walker & Sam Bergerson", "jockey": "Craig Grylls", "position": 3 }
+      ]
+    },
+    {
+      "date": "2026-01-03",
+      "weather": "Fine",
+      "going": "Soft5",
+      "distance": 1600,
+      "raceName": "Blue Star Group 1600",
+      "className": "Rating 65",
+      "results": [
+        { "horse": "Bradley", "trainer": "Cody Cole", "jockey": "Opie Bosson", "position": 1 },
+        { "horse": "Unusual Invader", "trainer": "Fraser Auret", "jockey": "Masa Hashizume", "position": 2 }
+      ]
+    },
+    {
+      "date": "2026-01-17",
+      "weather": "Overcast",
+      "going": "Soft6",
+      "distance": 1400,
+      "raceName": "Rothley Maiden 1400",
+      "className": "Maiden",
+      "results": [
+        { "horse": "Hoorah Henry", "trainer": "Lisa Latta", "jockey": "Samantha Collett", "position": 1 },
+        { "horse": "I'll Be Home Soon", "trainer": "Peter Lock", "jockey": "Matthew Cameron", "position": 2 },
+        { "horse": "Wyworry", "trainer": "John Wheeler", "jockey": "Kelly Myers", "position": 3 }
+      ]
+    },
+    {
+      "date": "2026-01-17",
+      "weather": "Overcast",
+      "going": "Soft6",
+      "distance": 1100,
+      "raceName": "Gee & Hickton Funeral Directors Sprint",
+      "className": "Open Handicap",
+      "results": [
+        { "horse": "Oneira", "trainer": "Cody Cole", "jockey": "Samantha Collett", "position": 1 },
+        { "horse": "Miss Fladgate", "trainer": "Stephen Marsh", "jockey": "Matt Cartwright", "position": 2 },
+        { "horse": "Idyllic", "trainer": "Kevin & Stephen Gray", "jockey": "Kate Hercock", "position": 3 }
+      ]
+    },
+    {
+      "date": "2026-01-17",
+      "weather": "Overcast",
+      "going": "Soft6",
+      "distance": 1200,
+      "raceName": "Aztech Engineering Ltd Sprint",
+      "className": "Rating 65",
+      "results": [
+        { "horse": "Quello Dolce", "trainer": "Cody Cole", "jockey": "Samantha Collett", "position": 1 },
+        { "horse": "Poppy's Girl", "trainer": "Shaun and Hazel Fannin", "jockey": "Chris Dell", "position": 2 },
+        { "horse": "The Big Picture", "trainer": "Bill Thurlow and Sam O'Malley", "jockey": "Craig Grylls", "position": 3 }
+      ]
+    },
+    {
+      "date": "2026-01-17",
+      "weather": "Overcast",
+      "going": "Soft6",
+      "distance": 2100,
+      "raceName": "Happy Hire 2100",
+      "className": "Rating 65",
+      "results": [
+        { "horse": "Enterprise Gem", "trainer": "Michael & Matthew Pitman", "jockey": "Daniel Stackhouse", "position": 1 },
+        { "horse": "Julianus", "trainer": "Jo Rathbone", "jockey": "Elen Nicholas", "position": 2 },
+        { "horse": "Air Dancer", "trainer": "Clinton Isdale", "jockey": "Liam Kauri", "position": 3 }
+      ]
+    },
+    {
+      "date": "2026-01-31",
+      "weather": "Fine",
+      "going": "Soft5",
+      "distance": 1200,
+      "raceName": "Harcourts Sprint",
+      "className": "Maiden",
+      "results": [
+        { "horse": "Miss Jones", "trainer": "Cody Cole", "jockey": "Samantha Collett", "position": 1 },
+        { "horse": "Moon Goddess", "trainer": "Michael & Matthew Pitman", "jockey": "Daniel Stackhouse", "position": 2 },
+        { "horse": "Precipice", "trainer": "Cody Cole", "jockey": "Ryan Elliot", "position": 3 }
+      ]
+    },
+    {
+      "date": "2026-01-31",
+      "weather": "Fine",
+      "going": "Soft5",
+      "distance": 1200,
+      "raceName": "Stephanie Murray Mortgages Three-Year-Old Sprint",
+      "className": "3YO SW+P",
+      "results": [
+        { "horse": "Cheerio", "trainer": "Cody Cole", "jockey": "Samantha Collett", "position": 1 },
+        { "horse": "Passiflora", "trainer": "Steven Ramsay & Julia Ritchie", "jockey": "Craig Grylls", "position": 2 },
+        { "horse": "Laura's Legacy", "trainer": "Janelle Millar", "jockey": "Toni Davies", "position": 3 }
+      ]
+    },
+    {
+      "date": "2026-01-31",
+      "weather": "Fine",
+      "going": "Soft5",
+      "distance": 1400,
+      "raceName": "Pak'n'Save Upper Hutt 1400",
+      "className": "Rating 65",
+      "results": [
+        { "horse": "Hivari", "trainer": "Meg Cunneen", "jockey": "Corey Campbell", "position": 1 },
+        { "horse": "Chester Boy", "trainer": "John Wheeler", "jockey": "Samantha Collett", "position": 2 },
+        { "horse": "Shacktime", "trainer": "Allan Sharrock", "jockey": "Kelly Myers", "position": 3 }
+      ]
+    },
+    {
+      "date": "2026-01-31",
+      "weather": "Fine",
+      "going": "Soft5",
+      "distance": 1600,
+      "raceName": "Harrisons Flooring 1600",
+      "className": "Maiden",
+      "results": [
+        { "horse": "Hoorah Henry", "trainer": "Lisa Latta", "jockey": "Samantha Collett", "position": 1 },
+        { "horse": "Andahar", "trainer": "Shaune Ritchie & Colm Murray", "jockey": "Joe Doyle", "position": 2 },
+        { "horse": "Teresa Mac", "trainer": "Ilone Kelly", "jockey": "Madan Singh", "position": 3 }
+      ]
+    },
+    {
+      "date": "2026-01-31",
+      "weather": "Fine",
+      "going": "Soft5",
+      "distance": 2100,
+      "raceName": "Momentum Consulting 2100",
+      "className": "Rating 65",
+      "results": [
+        { "horse": "Walkinthepark", "trainer": "Gary Vile", "jockey": "Courtney Barnes", "position": 1 },
+        { "horse": "Sir Bruce", "trainer": "Robbie Patterson", "jockey": "Craig Grylls", "position": 2 },
+        { "horse": "Helluvah Return", "trainer": "Gary Vile", "jockey": "Leah Hemi", "position": 3 }
+      ]
+    },
+    {
+      "date": "2026-03-01",
+      "weather": "Fine",
+      "going": "Soft5",
+      "distance": 1200,
+      "raceName": "Highden Park Sprint",
+      "className": "Maiden",
+      "results": [
+        { "horse": "Furiosa", "trainer": "Matthew Eales", "jockey": "Samantha Collett", "position": 1 },
+        { "horse": "Sir You Can Dance", "trainer": "Cody Cole", "jockey": "Joe Doyle", "position": 2 },
+        { "horse": "Ivy Lee", "trainer": "Allan Scarlett", "jockey": "Jack Taplin", "position": 3 }
+      ]
+    },
+    {
+      "date": "2026-03-01",
+      "weather": "Fine",
+      "going": "Soft5",
+      "distance": 1100,
+      "raceName": "Marsh Racing Sprint",
+      "className": "Rating 75",
+      "results": [
+        { "horse": "Party Rocking", "trainer": "John Bary", "jockey": "Jim Chung", "position": 1 },
+        { "horse": "Platinum Pantheon", "trainer": "Lisa Latta", "jockey": "Bruno Queiroz", "position": 2 },
+        { "horse": "Finest Hour", "trainer": "Ralph Manning", "jockey": "Rihaan Goyaram", "position": 3 }
+      ]
+    }
+  ]
+}
