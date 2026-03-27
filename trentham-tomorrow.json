@@ -1,0 +1,82 @@
+{
+  "meetingName": "Manawatu RC at Trentham",
+  "date": "2026-03-28",
+  "venue": "Trentham Racecourse",
+  "firstRaceTime": "12:30 pm",
+  "refreshedOn": "2026-03-27",
+  "sources": [
+    {
+      "label": "LoveRacing fields",
+      "url": "https://loveracing.nz/RaceInfo/54934/Meeting-Overview.aspx"
+    },
+    {
+      "label": "RACE Trentham event page",
+      "url": "https://jointheaction.co.nz/courtesy-ford-manawatu-sires-produce-stakes-raceday"
+    }
+  ],
+  "races": [
+    {
+      "number": 1,
+      "time": "12:30 pm",
+      "name": "Happy Hire Sprint",
+      "first": "She's All That",
+      "second": "When Stars Align"
+    },
+    {
+      "number": 2,
+      "time": "1:05 pm",
+      "name": "Resonant 1600",
+      "first": "The Ocean Heart",
+      "second": "Leica Ripa"
+    },
+    {
+      "number": 3,
+      "time": "1:40 pm",
+      "name": "Majestic Horse Floats 1400",
+      "first": "Capaci",
+      "second": "Only The Lonely"
+    },
+    {
+      "number": 4,
+      "time": "2:20 pm",
+      "name": "Higgins Concrete Manawatu Classic",
+      "first": "Brave Rebel",
+      "second": "Iffigive"
+    },
+    {
+      "number": 5,
+      "time": "2:53 pm",
+      "name": "Intowin.co.nz City Of Palmerston North Awapuni Gold Cup",
+      "first": "Anderson Bridge",
+      "second": "Freddie Time"
+    },
+    {
+      "number": 6,
+      "time": "3:28 pm",
+      "name": "Courtesy Ford Manawatu Sires' Produce Stakes",
+      "first": "State Of Valour",
+      "second": "Sweetest Thing"
+    },
+    {
+      "number": 7,
+      "time": "4:03 pm",
+      "name": "Bramco Granite & Marble Flying Handicap",
+      "first": "Ma Te Wa",
+      "second": "Churchillian"
+    },
+    {
+      "number": 8,
+      "time": "4:38 pm",
+      "name": "Listen Live On Sportnation.nz NZ Thoroughbred Breeders' Stakes",
+      "first": "She's A Dealer (AUS)",
+      "second": "Captured By Love (AUS)"
+    },
+    {
+      "number": 9,
+      "time": "5:12 pm",
+      "name": "Capture Signs Sprint",
+      "first": "Cheerio (AUS)",
+      "second": "Tale Of The Gypsy"
+    }
+  ]
+}

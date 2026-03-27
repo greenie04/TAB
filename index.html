@@ -3,167 +3,132 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TAB Trentham Predictor</title>
+    <title>Trentham Race Day Predictions</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="page-shell">
+    <main class="page">
       <header class="hero">
-        <div class="hero-copy">
-          <p class="eyebrow">NZ Racing Heuristic</p>
-          <h1>TAB Trentham Predictor</h1>
-          <p class="lede">
-            Trentham race scoring built from curated local venue results plus
-            season-wide horse performance, weather, and track firmness signals.
-          </p>
-          <div class="hero-meta">
-            <span>Venue: Trentham</span>
-            <span>Season sample: 2025-26</span>
-            <span>Model type: transparent heuristic</span>
-            <span id="data-status">Data source: bundled sample</span>
-          </div>
+        <p class="eyebrow">Tomorrow's Trentham Card</p>
+        <h1>Manawatu RC at Trentham</h1>
+        <p class="lede">
+          Simple race-day view with refreshed race times and predicted 1st and
+          2nd for each race.
+        </p>
+        <div class="hero-actions">
+          <button id="refresh-data" type="button">Refresh Predictions</button>
+          <span id="data-status">Loading latest card...</span>
         </div>
-        <aside class="hero-panel">
-          <h2>Model stance</h2>
-          <p>
-            This app ranks runners for Trentham races from an editable field. It
-            uses season-wide horse inputs and Trentham-specific venue signals.
-          </p>
-          <p>
-            Track firmware is treated here as <strong>track firmness / going</strong>
-            to match official Trentham result data.
-          </p>
-        </aside>
       </header>
 
-      <main class="layout">
-        <section class="card controls-card">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">Meeting View</p>
-              <h2>Races For The Day</h2>
-            </div>
-            <div class="button-row">
-              <button id="load-sprint" type="button">Load Sprint Example</button>
-              <button id="load-mile" type="button" class="secondary">
-                Load Mile Example
-              </button>
-              <button id="refresh-race" type="button" class="secondary">
-                Refresh Field Review
-              </button>
-            </div>
-          </div>
+      <section class="summary-card">
+        <div id="meeting-summary"></div>
+      </section>
 
-          <div class="controls-grid">
-            <label>
-              Race date
-              <input id="race-date" type="date" value="2026-03-28" />
-            </label>
-            <label>
-              Meeting race
-              <select id="meeting-race"></select>
-            </label>
-          </div>
+      <section class="table-card">
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Race</th>
+              <th>Time</th>
+              <th>Prediction</th>
+            </tr>
+          </thead>
+          <tbody id="race-body"></tbody>
+        </table>
+      </section>
 
-          <div class="summary-strip" id="season-strip"></div>
-          <div id="meeting-summary" class="mini-note"></div>
-        </section>
+      <section class="sources-card">
+        <p class="eyebrow">Sources</p>
+        <div id="sources"></div>
+      </section>
+    </main>
 
-        <section class="card results-card">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">Upcoming Meetings</p>
-              <h2>Next Trentham Meeting</h2>
-            </div>
-            <p class="mini-note">
-              The app reviews upcoming bundled meetings and auto-focuses the next one on the calendar.
-            </p>
-          </div>
-          <div id="upcoming-meetings"></div>
-        </section>
-
-        <section class="card runners-card">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">Field Builder</p>
-              <h2>Editable Runners</h2>
-            </div>
-            <div class="button-row">
-              <button id="add-runner" type="button">Add Runner</button>
-              <button id="score-race" type="button" class="accent">
-                Score Field
-              </button>
-            </div>
-          </div>
-
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>Horse</th>
-                  <th>Trainer</th>
-                  <th>Jockey</th>
-                  <th>Season Runs</th>
-                  <th>Season Wins</th>
-                  <th>Season Plc</th>
-                  <th>Barrier</th>
-                  <th>Form</th>
-                  <th>Best Range</th>
-                  <th>Wet Fit</th>
-                  <th>Course Fit</th>
-                  <th>Days Since</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody id="runner-body"></tbody>
-            </table>
-          </div>
-        </section>
-
-        <section class="card results-card">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">Prediction</p>
-              <h2>Selected Race Prediction</h2>
-            </div>
-            <p class="mini-note">
-              Race-day conditions come from the selected meeting race, and scores
-              are relative inside that field.
-            </p>
-          </div>
-          <div id="results"></div>
-        </section>
-
-        <section class="card results-card">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">Recent Review</p>
-              <h2>Previous 14 Days</h2>
-            </div>
-            <p class="mini-note">
-              Reviews bundled races and field overlaps in the two weeks before the selected race date.
-            </p>
-          </div>
-          <div id="recent-review"></div>
-        </section>
-
-        <section class="card insights-card">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">Season Snapshot</p>
-              <h2>Bundled Trentham Signals</h2>
-            </div>
-            <p class="mini-note">
-              Derived from curated official LoveRacing results for the 2025-26
-              Trentham meetings included in the app.
-            </p>
-          </div>
-          <div class="insights-grid" id="insights-grid"></div>
-          <div class="sources" id="sources"></div>
-        </section>
-      </main>
-    </div>
-
+    <script id="embedded-meeting-data" type="application/json">
+      {
+        "meetingName": "Manawatu RC at Trentham",
+        "date": "2026-03-28",
+        "venue": "Trentham Racecourse",
+        "firstRaceTime": "12:30 pm",
+        "refreshedOn": "2026-03-27",
+        "sources": [
+          {
+            "label": "LoveRacing fields",
+            "url": "https://loveracing.nz/RaceInfo/54934/Meeting-Overview.aspx"
+          },
+          {
+            "label": "RACE Trentham event page",
+            "url": "https://jointheaction.co.nz/courtesy-ford-manawatu-sires-produce-stakes-raceday"
+          }
+        ],
+        "races": [
+          {
+            "number": 1,
+            "time": "12:30 pm",
+            "name": "Happy Hire Sprint",
+            "first": "She's All That",
+            "second": "When Stars Align"
+          },
+          {
+            "number": 2,
+            "time": "1:05 pm",
+            "name": "Resonant 1600",
+            "first": "The Ocean Heart",
+            "second": "Leica Ripa"
+          },
+          {
+            "number": 3,
+            "time": "1:40 pm",
+            "name": "Majestic Horse Floats 1400",
+            "first": "Capaci",
+            "second": "Only The Lonely"
+          },
+          {
+            "number": 4,
+            "time": "2:20 pm",
+            "name": "Higgins Concrete Manawatu Classic",
+            "first": "Brave Rebel",
+            "second": "Iffigive"
+          },
+          {
+            "number": 5,
+            "time": "2:53 pm",
+            "name": "Intowin.co.nz City Of Palmerston North Awapuni Gold Cup",
+            "first": "Anderson Bridge",
+            "second": "Freddie Time"
+          },
+          {
+            "number": 6,
+            "time": "3:28 pm",
+            "name": "Courtesy Ford Manawatu Sires' Produce Stakes",
+            "first": "State Of Valour",
+            "second": "Sweetest Thing"
+          },
+          {
+            "number": 7,
+            "time": "4:03 pm",
+            "name": "Bramco Granite & Marble Flying Handicap",
+            "first": "Ma Te Wa",
+            "second": "Churchillian"
+          },
+          {
+            "number": 8,
+            "time": "4:38 pm",
+            "name": "Listen Live On Sportnation.nz NZ Thoroughbred Breeders' Stakes",
+            "first": "She's A Dealer (AUS)",
+            "second": "Captured By Love (AUS)"
+          },
+          {
+            "number": 9,
+            "time": "5:12 pm",
+            "name": "Capture Signs Sprint",
+            "first": "Cheerio (AUS)",
+            "second": "Tale Of The Gypsy"
+          }
+        ]
+      }
+    </script>
     <script src="app.js"></script>
   </body>
 </html>
