@@ -12,6 +12,8 @@ function renderMeeting(data) {
     <p class="eyebrow">Meeting</p>
     <h2>${data.meetingName}</h2>
     <p class="summary-meta">${data.date} • ${data.venue} • First race ${data.firstRaceTime}</p>
+    <p class="summary-meta">Track ${data.trackCondition} • Weather ${data.weather} • Rail ${data.rail}</p>
+    <p class="summary-meta">Track reading ${data.trackUpdateTime} • ${data.weatherUpdateNote}</p>
     <p class="summary-meta">Refreshed from official race fields on ${data.refreshedOn}.</p>
   `;
 
@@ -51,12 +53,12 @@ async function loadMeeting() {
 
     const data = await response.json();
     renderMeeting(data);
-    dataStatus.textContent = `Loaded ${data.races.length} races at ${new Date().toLocaleTimeString()}`;
+      dataStatus.textContent = `Loaded ${data.races.length} races with ${data.trackCondition} and ${data.weather} at ${new Date().toLocaleTimeString()}`;
   } catch (error) {
     try {
       const fallbackData = JSON.parse(embeddedMeetingData.textContent);
       renderMeeting(fallbackData);
-      dataStatus.textContent = "Showing embedded predictions. Refresh may be blocked on local file pages.";
+      dataStatus.textContent = `Showing embedded predictions using ${fallbackData.trackCondition} and ${fallbackData.weather}. Refresh may be blocked on local file pages.`;
     } catch {
       dataStatus.textContent = "Could not refresh the card data.";
     }
